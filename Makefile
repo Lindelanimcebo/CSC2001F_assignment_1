@@ -2,6 +2,7 @@ JAVAC=/usr/bin/javac
 .SUFFIXES: .java .class
 SRCDIR=src
 BINDIR=bin
+LOGSDIR=logs
 
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
@@ -14,6 +15,7 @@ default: $(CLASS_FILES)
 clean:
 	rm $(BINDIR)/*.class
 	rm $(SRCDIR)/*~
+	rm $(LOGSDIR)/*
 
 run:
-	java -cp bin LSArrayApp
+	java -cp bin LSArrayApp "8" "11" "22"

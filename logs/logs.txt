@@ -1,2 +1,0 @@
-java -cp bin LSArrayApp "8" "16" "22"
-The Areas are : 15, 7, 11, 3, 12, 4, 8, 16
