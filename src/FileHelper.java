@@ -2,12 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileHandler{
+public class FileHelper{
     
     File file;
     Scanner scanner;
     
-    public FileHandler ( String file) {
+    public FileHelper ( String file) {
      
         try {
             this.file = new File(file);

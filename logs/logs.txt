@@ -1,0 +1,3 @@
+Feb 27, 2020 12:24:59 AM LSArrayApp main
+INFO: The Areas are : 15, 7, 11, 3, 12, 4, 8, 16
+This operation was completed after 2976 comparison operations.
