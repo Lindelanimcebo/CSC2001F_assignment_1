@@ -17,5 +17,6 @@ clean:
 	rm $(SRCDIR)/*~
 	rm $(LOGSDIR)/*
 
+
 run:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)
