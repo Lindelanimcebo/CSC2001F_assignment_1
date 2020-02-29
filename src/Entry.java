@@ -1,4 +1,4 @@
-public class Entry{
+public class Entry implements Comparable<Entry>{
 
     private String slot;
     private String areas;
@@ -13,6 +13,10 @@ public class Entry{
         
         this.splitSlot();
             
+    }
+    
+    public Entry ( String slot ) {
+        this( slot , "");
     }
     
     private void splitSlot() {
@@ -37,6 +41,18 @@ public class Entry{
     
     public String getAreas () {
         return areas;
+    }
+    
+    public String getSlot () {
+        return this.slot;
+    }
+    
+    public boolean equals ( Entry other) {
+        return this.slot.equals( other.getSlot() );
+    }
+    
+    public int compareTo ( Entry other) {
+        return this.slot.compareTo( other.getSlot() );
     }
         
     public String toString() {
