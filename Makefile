@@ -7,7 +7,10 @@ LOGSDIR=logs
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 	
-CLASSES=Entry.class FileHelper.class LSArray.class LSArrayApp.class
+CLASSES=Entry.class FileHelper.class LSArray.class LSArrayApp.class \
+BinaryTreeNode.class BTQueueNode.class BTQueue.class  BinaryTree.class \
+BinarySearchTree.class LSBST.class LSBSTApp.class
+
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 
 default: $(CLASS_FILES)
@@ -18,5 +21,8 @@ clean:
 	rm $(LOGSDIR)/*
 
 
-run:
+runA:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)
+
+runB:
+	java -cp bin LSBSTApp $(stage) $(day) $(time)

@@ -41,7 +41,9 @@ public class LSArray{
     }
     
     public String printAreas ( int stage, int day, int startTime) {
+    
         Entry tmp = this.findEntry( stage, day, startTime );
+        
         return ( tmp == null ? "Areas not found" : "The Areas are : "+tmp.getAreas() +
         "\n"+ 
         "This operation was completed after "+this.counter+" comparison operations."
