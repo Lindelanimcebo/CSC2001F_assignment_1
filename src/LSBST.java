@@ -41,7 +41,9 @@ public class LSBST {
         
         return ( entry == null ? "No Areas Found " : "The areas are: "+entry.getAreas()+
         "\n"+
-        "Operation executed after "+ tree.getCount() + " Comparison steps."
+        "insert\tcomparison"+
+        "\n"+
+        ( ( tree.getInsertCounter() ) + "\t" + ( tree.getComparisonCounter() ) )
         );
     }
     

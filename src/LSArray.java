@@ -4,12 +4,16 @@ public class LSArray{
 
     private Entry [] array;
     private FileHelper handler;
-    private int counter;
+    
+    private int insertCounter;
+    private int comparisonCounter;
         
     public LSArray(){
         this.array = new Entry[3000];
         this.handler = new FileHelper( "./data/data.txt" );
-        counter = 0;
+        
+        comparisonCounter = 0;
+        insertCounter = 0;
         
         this.addEntries();
     }
@@ -26,7 +30,7 @@ public class LSArray{
         for ( Entry entry : array){
             if (entry != null) {
             
-                this.counter++; //counting comparison operations
+                this.comparisonCounter++; //counting comparison operations
                 
                 if ( entry.equals( stage, day, startTime ) ){
                     return entry;
@@ -46,7 +50,9 @@ public class LSArray{
         
         return ( tmp == null ? "Areas not found" : "The Areas are : "+tmp.getAreas() +
         "\n"+ 
-        "This operation was completed after "+this.counter+" comparison operations."
+        "insert\tcomparison"+
+        "\n"+
+        ( (this.insertCounter) + "\t" + (this.comparisonCounter) )
         );
     }
     
