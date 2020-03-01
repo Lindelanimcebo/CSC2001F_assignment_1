@@ -3,6 +3,7 @@ JAVAC=/usr/bin/javac
 SRCDIR=src
 BINDIR=bin
 LOGSDIR=logs
+DATADIR=data
 
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
@@ -20,9 +21,15 @@ clean:
 	rm $(SRCDIR)/*~
 	rm $(LOGSDIR)/*
 
+clean-t:
+	rm $(DATADIR)/*test*
+
 
 runA:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)
 
 runB:
 	java -cp bin LSBSTApp $(stage) $(day) $(time)
+
+generate:
+	python scripts/generateFiles.py
