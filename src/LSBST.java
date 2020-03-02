@@ -3,10 +3,10 @@ public class LSBST {
     private BinarySearchTree<Entry> tree;
     private FileHelper helper;
     
-    public LSBST () {
+    public LSBST ( String file) {
         
         tree = new BinarySearchTree<Entry>();
-        helper = new FileHelper("./data/data.txt");
+        helper = new FileHelper( file );
         
         this.addEntries();
     }

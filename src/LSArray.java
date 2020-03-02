@@ -8,9 +8,9 @@ public class LSArray{
     private int insertCounter;
     private int comparisonCounter;
         
-    public LSArray(){
+    public LSArray( String file ){
         this.array = new Entry[3000];
-        this.handler = new FileHelper( "./data/data.txt" );
+        this.handler = new FileHelper( file );
         
         comparisonCounter = 0;
         insertCounter = 0;

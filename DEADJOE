@@ -1,0 +1,22 @@
+
+*** These modified files were found in JOE when it aborted on Mon Mar  2 12:14:17 2020
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+src/LSArrayApp.java
+src/LSBSTApp.java
+src/LSArrayApp.java
+src/LSBST.java
+src/LSArray.java
+src/LSBSTApp.java
+src/LSArrayApp.java
+src/LSBSTApp.java
+src/LSBSTApp.java
+src/LSArrayApp.java
+scripts/generateFiles.py
+
+*** File '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc

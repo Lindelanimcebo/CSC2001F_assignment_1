@@ -7,6 +7,10 @@ public class LSBSTApp {
     
     public static void main ( String [] args ) {
     
+        int length = args.length;
+        
+        String file_name = length == 4 ? args[3] : "./data/data.txt";
+        
         Logger logger = Logger.getLogger(LSArrayApp.class.getName());
         FileHandler fh;
         
@@ -22,14 +26,12 @@ public class LSBSTApp {
         }
 
         
-        LSBST tree = new LSBST();
-        
-        int length = args.length;
+        LSBST tree = new LSBST( file_name );
         
         if ( length == 0 ) {
             tree.printAllAreas();
         }
-        else if ( length == 3){
+        else if ( length == 3 || length == 4){
             logger.info( tree.printAreas( args[0], args[1], args[2] ) );
         }
         else {

@@ -1,3 +1,4 @@
-Feb 29, 2020 5:34:19 AM LSArrayApp main
-INFO: The Areas are : 13, 5, 9, 1, 14, 6, 10, 2
-This operation was completed after 2793 comparison operations.
+Mar 02, 2020 12:01:51 PM LSArrayApp main
+INFO: The Areas are : 14, 6, 2
+insert	comparison
+0	486
