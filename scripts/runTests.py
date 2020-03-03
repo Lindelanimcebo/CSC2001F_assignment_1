@@ -1,26 +1,57 @@
 import os
 import subprocess
 import numpy as np
-#import pandas as pd
+import pandas as pd
+import random
 
-def main ():
+def main ( app ):
 
-    #os.system('make clean')
-    #os.system('make')
+    df = pd.DataFrame()
     
-    for i in range(276, 2655, 296):
+    index = pd.MultiIndex.from_arrays([['insert' for i in range(0,3)]+['comparison' for i in range(0,3)], ['best_case', 'average_case', 'worst_case']*2])
+    df_stats = pd.DataFrame(columns = index)
+    
+    for i in range(start, stop, step):
         
         file_name = './data/test_n_'+str(i)+'.txt'
-        file = open( file_name , 'r' ); 
+        file = open( file_name , 'r' );
+                
+        data_dict = { "insert" : [] , "comparison" : [] } 
         
         for line in file:
-        
-            command = 'java -cp bin LSArrayApp '+stage(line)+' '+day(line)+' '+time(line)+' '+file_name
+
+            command = 'java -cp bin '+app+' '+stage(line)+' '+day(line)+' '+time(line)+' '+file_name
+            cmd = command.split()
             print(command)
-            output =  os.system(command)
-            print(output)
+            
+            os.system(command)
+            
+            with open('./logs/logs.txt', 'r') as output:
+                output_to_dict(data_dict, [line.strip() for line in output.readlines()])
+        
+        index = pd.MultiIndex.from_arrays([ [i,i], ['insert', 'comparison'] ])
+        
+        df_n = pd.DataFrame(data=np.array([data_dict['insert'], data_dict['comparison']]).T , columns=index)
+        
+        df_stats.loc[i] = [df_n[i]['insert'].min() ,df_n[i]['insert'].sum()/i , df_n[i]['insert'].max(), df_n[i]['comparison'].min(), df_n[i]['comparison'].sum()/i, df_n[i]['comparison'].max()]
+        df = pd.concat([df, df_n], axis=1, sort=False)
+            
+    with open('./logs/test_'+app+'_raw_data.csv', 'w') as out:
+        df.to_csv(out)
+        out.close()       
+            
+    with open('./logs/test_'+app+'_statistics.csv', 'w') as stats:
+        df_stats.to_csv(stats)
+        stats.close()
 
-
+        
+def output_to_dict( dict, output):
+    
+    insert, comparison = [int(i) for i in output[3].split('\t')]
+            
+    dict['insert'].append(insert)
+    dict['comparison'].append(comparison)         
+    
 def stage(line):
     return line[0]
 
@@ -30,3 +61,34 @@ def day(line):
 def time(line):
     rindex = line.rindex('_')
     return line[ rindex + 1 : rindex+3]
+
+def generate (start, stop, step):
+    f_data = open("./data/data.txt", 'r')
+    data = f_data.readlines()
+    
+    f_full = open("./data/test_n_2976.txt", "w")
+    
+    for line in data:
+        f_full.write(line)
+    
+    f_full.close()
+    
+    for n in range(start, stop, step):
+    
+        f_n = open("./data/test"+"_n_"+str(n)+".txt", 'w')
+        indeces = random.sample(range(2976), n)
+        
+        for index in indeces:
+            f_n.write(data[index])
+        
+        f_n.close()    
+    
+    f_data.close()  
+
+if __name__ == "__main__":
+    start = 5
+    stop = 16
+    step = 5
+    generate(start, stop, step)
+    main('LSArrayApp')
+    main('LSBSTApp')

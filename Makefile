@@ -23,13 +23,13 @@ clean:
 
 clean-t:
 	rm $(DATADIR)/*test*
-
+	rm $(LOGSDIR)/*test*
 
 runA:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)
 
 runB:
 	java -cp bin LSBSTApp $(stage) $(day) $(time)
-
-generate:
-	python scripts/generateFiles.py
+	
+test:
+	python3.8 scripts/runTests.py
