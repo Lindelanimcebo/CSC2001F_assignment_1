@@ -1,0 +1,5 @@
+,insert,insert,insert,comparison,comparison,comparison
+,best_case,average_case,worst_case,best_case,average_case,worst_case
+5,8.0,8.0,8.0,1.0,2.6,4.0
+10,27.0,27.0,27.0,1.0,3.7,7.0
+15,45.0,45.0,45.0,1.0,4.0,6.0
