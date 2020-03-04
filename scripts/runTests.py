@@ -86,9 +86,9 @@ def generate (start, stop, step):
     f_data.close()  
 
 if __name__ == "__main__":
-    start = 5
-    stop = 16
-    step = 5
+    start = 297
+    stop = 2666
+    step = 296
     generate(start, stop, step)
     main('LSArrayApp')
     main('LSBSTApp')
