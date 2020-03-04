@@ -2,11 +2,22 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+* This is a helper class to manage file operations
+* 
+* @see java.io.File
+* @see java.util.Scanner
+* @author Lindelani Mbatha
+*/
 public class FileHelper{
     
-    File file;
-    Scanner scanner;
+    private File file;
+    private Scanner scanner;
     
+    /**
+    * FileHelper constructor
+    *@param file is a path of the file
+    */
     public FileHelper ( String file) {
      
         try {
@@ -20,10 +31,20 @@ public class FileHelper{
         
     }
     
+    /**
+    * Checks for next line
+    * @return a <code> boolean </boolean>
+    * Specifies existence of a next line
+    */
     public boolean hasNextLine(){
         return scanner.hasNextLine();
     }
     
+    /**
+    * Reads next line on a file
+    * @return <code> Entry </code> representing
+    * each line an Entry object
+    */
     public Entry readLine(){
      
         String line = scanner.nextLine();
@@ -34,16 +55,11 @@ public class FileHelper{
         return new Entry( slot , areas );
     }
     
-    public void setFile( String file){
-       this.file = new File(file); 
-    }
-    
-    public String getFile(){
-        return file.getName();
-    }
-    
+    /**
+    * Prints all lines of the files
+    */
     public void printFile () {
-        System.out.println("File : "+this.getFile());
+        System.out.println("File : "+this.file.getName());
         while( scanner.hasNextLine() ) {
             String data = scanner.nextLine();
             System.out.println(data);
@@ -52,9 +68,12 @@ public class FileHelper{
         System.out.println("**************DONE************");    
     }
     
+    /**
+    * @return a <code> String </code> representing
+    * the file name
+    */
     public String toString(){
-        return this.getFile();
+        return this.file.getName();
     }
-    
-    
+        
 }

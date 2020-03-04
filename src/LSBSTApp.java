@@ -3,10 +3,24 @@ import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 
+/**
+* Binary Search Tree application main class
+* 
+* @author Lindelani Mbatha
+*/
 public class LSBSTApp {
-    
+
+    /**
+    * application main method
+    * @param <code> String [] <code> args can either be empty or 3 spaced 1-2 digit numbers, 
+    * and the third param speceifies the file to search on
+    */
     public static void main ( String [] args ) {
     
+        int length = args.length;
+        
+        String file_name = length == 4 ? args[3] : "./data/data.txt";
+        
         Logger logger = Logger.getLogger(LSArrayApp.class.getName());
         FileHandler fh;
         
@@ -22,14 +36,12 @@ public class LSBSTApp {
         }
 
         
-        LSBST tree = new LSBST();
-        
-        int length = args.length;
+        LSBST tree = new LSBST( file_name );
         
         if ( length == 0 ) {
             tree.printAllAreas();
         }
-        else if ( length == 3){
+        else if ( length == 3 || length == 4){
             logger.info( tree.printAreas( args[0], args[1], args[2] ) );
         }
         else {

@@ -3,11 +3,24 @@ import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 
-
+/**
+* Array application main class
+* 
+* @author Lindelani Mbatha
+*/
 public class LSArrayApp{
     
+    /**
+    * application main method
+    * @param <code> String [] <code> args can either be empty or 3 spaced 1-2 digit numbers.
+    * and the third param speceifies the file to search on
+    */
     public static void main(String [] args){
         
+        int length = args.length;
+        
+        String file_name = length == 4 ? args[3] : "./data/data.txt";
+                
         Logger logger = Logger.getLogger(LSArrayApp.class.getName());
         FileHandler fh;
         
@@ -22,14 +35,12 @@ public class LSArrayApp{
             e.printStackTrace();
         }
          
-        LSArray array = new LSArray();
-        
-        int length = args.length;
-        
+        LSArray array = new LSArray( file_name );    
+                
         if ( length == 0 ) {
             array.printAllAreas();
         }
-        else if ( length == 3){
+        else if ( length == 3 || length == 4 ){
             logger.info( array.printAreas( args[0], args[1], args[2] ) );
         }
         else {
