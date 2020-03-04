@@ -1,9 +1,11 @@
 JAVAC=/usr/bin/javac
+JAVADOC=/usr/bin/javadoc
 .SUFFIXES: .java .class
 SRCDIR=src
 BINDIR=bin
 LOGSDIR=logs
 DATADIR=data
+DOCDIR=doc
 
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
@@ -24,6 +26,8 @@ clean:
 clean-t:
 	rm $(DATADIR)/*test*
 	rm $(LOGSDIR)/*test*
+docs:
+	javadoc -d doc/ src/*.java
 
 runA:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)

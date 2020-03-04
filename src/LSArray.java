@@ -1,4 +1,8 @@
 
+/**
+* This is a model class to store the array
+* @author Lindelani Mbatha
+*/
 public class LSArray{
 
 
@@ -7,7 +11,12 @@ public class LSArray{
     
     private int insertCounter;
     private int comparisonCounter;
-        
+    
+    /**
+    * Constructor initialises instance variables
+    * @param file is a String of the file pasth
+    * @see #addEntries()
+    */    
     public LSArray( String file ){
         this.array = new Entry[3000];
         this.handler = new FileHelper( file );
@@ -17,7 +26,10 @@ public class LSArray{
         
         this.addEntries();
     }
-
+    
+    /**
+    * Helper method to add entries to the array 
+    */
     private void addEntries () {
         int i = 0;
         while ( handler.hasNextLine() && i < 3000) {
@@ -25,7 +37,14 @@ public class LSArray{
         }
     }
     
-    public Entry findEntry ( int stage, int day, int startTime ) {
+    /**
+    * Helper method to find areas of a specific slot
+    * @param stage is the string stage
+    * @param day is the string day
+    * @param startTime is the string start time
+    * @return an <code> Entry </code> object with the found results, or null of not found
+    */
+    public Entry findEntry ( String stage, String day, String startTime ) {
         
         for ( Entry entry : array){
             if (entry != null) {
@@ -40,22 +59,28 @@ public class LSArray{
         return null;
     }
     
-    public String printAreas ( String stage, String day, String startTime ) {
-        return this.printAreas( Integer.parseInt(stage), Integer.parseInt(day), Integer.parseInt(startTime) );
-    }
-    
-    public String printAreas ( int stage, int day, int startTime) {
+    /**
+    * Prints areas of a specif slot
+    * @param stage is the stage string
+    * @param day is the string day
+    * @param startTime is the string start time
+    * @returns a <code> String </code> with the results
+    */    
+    public String printAreas ( String stage, String day, String startTime) {
     
         Entry tmp = this.findEntry( stage, day, startTime );
         
         return ( tmp == null ? "Areas not found" : "The Areas are : "+tmp.getAreas() +
         "\n"+ 
-        "insert\tcomparison"+
+        "insert\tfind"+
         "\n"+
         ( (this.insertCounter) + "\t" + (this.comparisonCounter) )
         );
     }
     
+    /**
+    * void function to print all areas
+    */
     public void printAllAreas () {
         for ( Entry entry : array) {
             if (entry != null)
@@ -63,4 +88,4 @@ public class LSArray{
         }
     }
 
-}
+} 

@@ -3,8 +3,18 @@ import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 
+/**
+* Binary Search Tree application main class
+* 
+* @author Lindelani Mbatha
+*/
 public class LSBSTApp {
-    
+
+    /**
+    * application main method
+    * @param <code> String [] <code> args can either be empty or 3 spaced 1-2 digit numbers, 
+    * and the third param speceifies the file to search on
+    */
     public static void main ( String [] args ) {
     
         int length = args.length;
