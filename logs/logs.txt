@@ -1,4 +1,0 @@
-Mar 04, 2020 7:55:21 PM LSBSTApp main
-INFO: The areas are: 12, 4, 8, 16, 13, 5
-insert	find
-50	8
